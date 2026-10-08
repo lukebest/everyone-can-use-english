@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="81ce3d8d-c928-40c8-a821-85b819057fcc" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/harmony/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/AppScope/app.json5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/AppScope/resources/base/element/string.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/AppScope/resources/base/media/app_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/build-profile.json5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/build-profile.json5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/hvigorfile.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/oh-package.json5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/common/AppContext.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/common/Settings.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/common/Theme.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/common/Ui.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/components/LookupSheet.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/components/ResultSheet.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/data/Db.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/entryability/EntryAbility.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/models/Agents.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/pages/ChatPage.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/pages/ChatTab.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/pages/CourseReaderPage.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/pages/CourseTab.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/pages/Index.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/pages/MineTab.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/pages/ShadowPlayerPage.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/pages/ShadowTab.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/pages/VocabTab.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/services/Files.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/services/RelayClient.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/services/Srs.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/services/Subtitles.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/ets/services/Tts.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/module.json5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/resources/base/element/color.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/resources/base/element/string.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/resources/base/media/startIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/resources/base/profile/main_pages.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/entry/src/main/resources/base/profile/network_config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/hvigor/hvigor-config.json5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/hvigorfile.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/oh-package.json5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/harmony/scripts/build-course.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/scripts/install-whisper.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/app.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/cursor.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/db.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/http.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/json.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/json.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/limit.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/prompts.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/score.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/score.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/whisper.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/src/whisper.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relay/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="3KOX0FmPVdjXYR2i4D20sLHDo5P" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/luke/Work/everyone-can-use-english/harmony"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="81ce3d8d-c928-40c8-a821-85b819057fcc" name="更改" comment="" />
+      <created>1791429364427</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1791429364427</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -1,13 +1,28 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/home/luke/.ohos/config/default_harmony_afejKf33Za4jTBWqkO-gzijyJj5EyJWmk91QZCNFxRY=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B123F3007B3CD13C21C49EA8D1F3AC8AD8C147B76C6F5046A3894C454F43D5997C9A5BFDBE54041",
+          "profile": "/home/luke/.ohos/config/default_harmony_afejKf33Za4jTBWqkO-gzijyJj5EyJWmk91QZCNFxRY=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/home/luke/.ohos/config/default_harmony_afejKf33Za4jTBWqkO-gzijyJj5EyJWmk91QZCNFxRY=.p12",
+          "storePassword": "0000001BB5D0F1A8F38B1F2756CEAD9FAB9E9D4ED4F06F134A8FD53141EA0B170816220421715F477AB1DD"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
+        "signingConfig": "default",
         "compileSdkVersion": "26.0.0",
-        "compatibleSdkVersion": "26.0.0",
+        "compatibleSdkVersion": "6.1.1(24)",
         "runtimeOS": "HarmonyOS",
-        "targetSdkVersion": "26.0.0"
+        "targetSdkVersion": "6.1.1(24)"
       }
     ],
     "buildModeSet": [

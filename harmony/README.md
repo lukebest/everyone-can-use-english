@@ -1,6 +1,6 @@
 # Enjoy for HarmonyOS
 
-Stage 模型工程（API 26 / HarmonyOS 26.0.0）。用 DevEco Studio 打开 `harmony/` 目录，签名后安装到手机。
+Stage 模型工程（API 24 / HarmonyOS 6.1.1）。用 DevEco Studio 打开 `harmony/` 目录，签名后安装到手机。
 
 课程、跟读、对话、生词都在这个应用里。查词、翻译、分析、润色、对话走 [`relay/`](../relay/)：模型是 Cursor SDK 的 `auto`，用量记在你的 Auto 池。手机上只保存中转地址和访问 Token。
 
