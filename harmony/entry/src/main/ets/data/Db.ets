@@ -1,6 +1,6 @@
 import { relationalStore } from '@kit.ArkData';
 import { common } from '@kit.AbilityKit';
-import { LookupResult } from '../services/RelayClient';
+import { LookupResult, UsageInfo } from '../services/Types';
 
 let store: relationalStore.RdbStore | null = null;
 
@@ -63,6 +63,19 @@ const SCHEMA: string[] = [
     role TEXT NOT NULL,
     content TEXT NOT NULL,
     created_at INTEGER NOT NULL
+  )`,
+  `CREATE TABLE IF NOT EXISTS llm_cache (
+    cache_key TEXT PRIMARY KEY,
+    kind TEXT NOT NULL,
+    value TEXT NOT NULL,
+    created_at INTEGER NOT NULL
+  )`,
+  `CREATE TABLE IF NOT EXISTS llm_usage (
+    provider TEXT PRIMARY KEY,
+    requests INTEGER NOT NULL DEFAULT 0,
+    input_tokens INTEGER NOT NULL DEFAULT 0,
+    output_tokens INTEGER NOT NULL DEFAULT 0,
+    total_tokens INTEGER NOT NULL DEFAULT 0
   )`
 ];
 
@@ -482,5 +495,59 @@ export class ChatDao {
 
   static async updateMessage(id: number, content: string): Promise<void> {
     await Db.get().executeSql('UPDATE messages SET content = ? WHERE id = ?', [content, id]);
+  }
+}
+
+export class LlmCacheDao {
+  static async get(key: string): Promise<string> {
+    const result = await rows('SELECT value FROM llm_cache WHERE cache_key = ?', [key]);
+    try {
+      if (!result.goToNextRow()) {
+        return '';
+      }
+      return result.getString(col(result, 'value'));
+    } finally {
+      result.close();
+    }
+  }
+
+  static async put(key: string, kind: string, value: string): Promise<void> {
+    await Db.get().executeSql(
+      'INSERT OR REPLACE INTO llm_cache (cache_key, kind, value, created_at) VALUES (?, ?, ?, ?)',
+      [key, kind, value, Date.now()]
+    );
+  }
+}
+
+export class LlmUsageDao {
+  static async add(provider: string, inputTokens: number, outputTokens: number, totalTokens: number): Promise<void> {
+    await Db.get().executeSql(
+      'INSERT INTO llm_usage (provider, requests, input_tokens, output_tokens, total_tokens) VALUES (?, 1, ?, ?, ?) ' +
+        'ON CONFLICT(provider) DO UPDATE SET requests = requests + 1, ' +
+        'input_tokens = input_tokens + excluded.input_tokens, ' +
+        'output_tokens = output_tokens + excluded.output_tokens, ' +
+        'total_tokens = total_tokens + excluded.total_tokens',
+      [provider, inputTokens, outputTokens, totalTokens]
+    );
+  }
+
+  static async get(provider: string): Promise<UsageInfo> {
+    const info = new UsageInfo();
+    const result = await rows(
+      'SELECT requests, input_tokens, output_tokens, total_tokens FROM llm_usage WHERE provider = ?',
+      [provider]
+    );
+    try {
+      if (!result.goToNextRow()) {
+        return info;
+      }
+      info.requests = result.getLong(col(result, 'requests'));
+      info.inputTokens = result.getLong(col(result, 'input_tokens'));
+      info.outputTokens = result.getLong(col(result, 'output_tokens'));
+      info.totalTokens = result.getLong(col(result, 'total_tokens'));
+      return info;
+    } finally {
+      result.close();
+    }
   }
 }

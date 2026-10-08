@@ -4,7 +4,8 @@ import { Theme } from '../common/Theme';
 import { errorText, toast } from '../common/Ui';
 import { ChatDao, MessageItem } from '../data/Db';
 import { findAgent } from '../models/Agents';
-import { ChatHandlers, ChatTurn, RelayClient, Suggestion } from '../services/RelayClient';
+import { LlmClient } from '../services/LlmClient';
+import { ChatHandlers, ChatTurn, Suggestion } from '../services/Types';
 import { tts } from '../services/Tts';
 
 class ChatRoute {
@@ -107,26 +108,23 @@ struct ChatPage {
       handlers.onDelta = (delta: string): void => {
         this.appendDelta(delta);
       };
-      handlers.onDone = (runId: string): void => {
-        this.finish(assistantId, runId);
+      handlers.onDone = (): void => {
+        this.finish(assistantId);
       };
       handlers.onError = (message: string): void => {
         this.appendDelta(message);
-        this.finish(assistantId, '');
+        this.finish(assistantId);
       };
-      this.request = RelayClient.shared().chat(findAgent(this.agentKey).prompt, history, text, handlers);
+      this.request = LlmClient.shared().chat(findAgent(this.agentKey).prompt, history, text, handlers);
     }).catch((err: Object) => {
       this.sending = false;
       toast(errorText(err));
     });
   }
 
-  finish(assistantId: number, runId: string): void {
+  finish(assistantId: number): void {
     this.sending = false;
     this.request = null;
-    if (runId.length < 0) {
-      return;
-    }
     if (this.lines.length === 0) {
       return;
     }
@@ -143,7 +141,7 @@ struct ChatPage {
     if (context.length === 0) {
       context = 'The conversation has just started. Suggest ways to greet the coach in English.';
     }
-    RelayClient.shared().suggest(context).then((items: Suggestion[]) => {
+    LlmClient.shared().suggest(context).then((items: Suggestion[]) => {
       this.suggestions = items;
       this.showSuggestions = true;
     }).catch((err: Object) => {

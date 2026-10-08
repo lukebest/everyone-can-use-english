@@ -1,4 +1,5 @@
-import { LookupResult, RelayClient } from '../services/RelayClient';
+import { LlmClient } from '../services/LlmClient';
+import { LookupResult } from '../services/Types';
 import { VocabDao } from '../data/Db';
 import { Theme } from '../common/Theme';
 import { errorText, toast } from '../common/Ui';
@@ -29,7 +30,7 @@ export struct LookupSheet {
     this.loading = true;
     this.error = '';
     this.searched = true;
-    RelayClient.shared().lookup(query, this.context).then((result: LookupResult) => {
+    LlmClient.shared().lookup(query, this.context).then((result: LookupResult) => {
       this.result = result;
       this.loading = false;
     }).catch((err: Object) => {

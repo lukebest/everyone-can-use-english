@@ -9,7 +9,9 @@ import { LookupSheet } from '../components/LookupSheet';
 import { ResultSheet } from '../components/ResultSheet';
 import { MediaDao, MediaItem, NoteDao, NoteItem, RecordingDao, RecordingItem, SegmentDao, SegmentItem } from '../data/Db';
 import { copyInto, ensureDir, pickFile, readText } from '../services/Files';
-import { AssessResult, RelayClient, WordMark } from '../services/RelayClient';
+import { LlmClient } from '../services/LlmClient';
+import { SpeechClient } from '../services/SpeechClient';
+import { AssessResult, WordMark } from '../services/Types';
 import { Cue, parseSubtitles } from '../services/Subtitles';
 
 class MediaRoute {
@@ -402,7 +404,7 @@ struct ShadowPlayerPage {
       return;
     }
     toast('正在转写，可能要等一会儿');
-    RelayClient.shared().transcribe(this.mediaPath).then((cues: Cue[]) => {
+    SpeechClient.shared().transcribe(this.mediaPath).then((cues: Cue[]) => {
       const segments: SegmentItem[] = [];
       for (let i = 0; i < cues.length; i++) {
         const item = new SegmentItem();
@@ -430,7 +432,7 @@ struct ShadowPlayerPage {
       toast('先录一遍这句');
       return;
     }
-    RelayClient.shared().assess(this.takePath, this.sentence).then((result: AssessResult) => {
+    SpeechClient.shared().assess(this.takePath, this.sentence).then((result: AssessResult) => {
       this.score = result.score;
       this.marks = result.words;
       if (this.takeId > 0) {
@@ -524,9 +526,9 @@ struct ShadowPlayerPage {
           })
           Button('回放').height(32).fontSize(14).backgroundColor(Theme.ink).margin(4).onClick(() => { this.playTake(); })
           Button('评分').height(32).fontSize(14).backgroundColor(Theme.ok).margin(4).onClick(() => { this.assess(); })
-          Button('翻译').height(32).fontSize(14).backgroundColor(Theme.ink).margin(4).onClick(() => { this.showText('翻译', RelayClient.shared().translate(this.sentence)); })
-          Button('分析').height(32).fontSize(14).backgroundColor(Theme.ink).margin(4).onClick(() => { this.showText('分析', RelayClient.shared().analyze(this.sentence)); })
-          Button('润色').height(32).fontSize(14).backgroundColor(Theme.ink).margin(4).onClick(() => { this.showText('润色', RelayClient.shared().refine(this.sentence, '')); })
+          Button('翻译').height(32).fontSize(14).backgroundColor(Theme.ink).margin(4).onClick(() => { this.showText('翻译', LlmClient.shared().translate(this.sentence)); })
+          Button('分析').height(32).fontSize(14).backgroundColor(Theme.ink).margin(4).onClick(() => { this.showText('分析', LlmClient.shared().analyze(this.sentence)); })
+          Button('润色').height(32).fontSize(14).backgroundColor(Theme.ink).margin(4).onClick(() => { this.showText('润色', LlmClient.shared().refine(this.sentence, '')); })
           Button('查词').height(32).fontSize(14).backgroundColor(Theme.accent).margin(4).onClick(() => { this.showLookup = true; })
           Button('字幕').height(32).fontSize(14).backgroundColor(Theme.muted).margin(4).onClick(() => { this.importSubtitle(); })
           Button('自动分句').height(32).fontSize(14).backgroundColor(Theme.muted).margin(4).onClick(() => { this.transcribe(); })

@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "HarmonyOS Enjoy relay. Text AI goes through the Cursor SDK on the Auto pool.",
+  "description": "HarmonyOS Enjoy speech relay. Transcribe and score audio with whisper.cpp.",
   "engines": {
     "node": ">=22.13"
   },
@@ -14,10 +14,8 @@
     "test": "tsx --test src/*.test.ts"
   },
   "dependencies": {
-    "@cursor/sdk": "^1.0.13",
     "@hono/node-server": "^1.14.0",
-    "hono": "^4.7.0",
-    "zod": "^3.24.0"
+    "hono": "^4.7.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.0",

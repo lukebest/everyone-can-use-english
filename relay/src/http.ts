@@ -1,15 +1,7 @@
-import { createHash, timingSafeEqual } from "node:crypto";
+import { timingSafeEqual } from "node:crypto";
 import type { Context, MiddlewareHandler } from "hono";
-import { CursorAgentError } from "@cursor/sdk";
-import { ZodError } from "zod";
-import { RunFailedError } from "./cursor.js";
-import { InvalidJsonError } from "./json.js";
 import { TimeoutError } from "./limit.js";
 import { ServiceError } from "./whisper.js";
-
-export function cacheKey(kind: string, payload: unknown): string {
-  return createHash("md5").update(`${kind}\n${JSON.stringify(payload)}`).digest("hex");
-}
 
 export function bearerAuth(token: string): MiddlewareHandler {
   const expected = Buffer.from(token);
@@ -25,25 +17,10 @@ export function bearerAuth(token: string): MiddlewareHandler {
   };
 }
 
-export function httpError(err: unknown): { status: 400 | 500 | 502 | 503 | 504; body: Record<string, unknown> } {
-  if (err instanceof ZodError) {
-    return { status: 400, body: { error: "bad_request", message: err.message } };
-  }
+export function httpError(err: unknown): { status: 400 | 500 | 503 | 504; body: Record<string, unknown> } {
   if (err instanceof ServiceError) {
     const status = err.status === 400 || err.status === 503 ? err.status : 500;
     return { status, body: { error: err.code, message: err.message } };
-  }
-  if (err instanceof CursorAgentError) {
-    return {
-      status: 502,
-      body: { error: "startup", message: err.message, retryable: err.isRetryable },
-    };
-  }
-  if (err instanceof RunFailedError) {
-    return { status: 502, body: { error: "run", message: err.message, runId: err.runId } };
-  }
-  if (err instanceof InvalidJsonError) {
-    return { status: 502, body: { error: "invalid_json", message: err.message } };
   }
   if (err instanceof TimeoutError) {
     return { status: 504, body: { error: "timeout", message: err.message } };
