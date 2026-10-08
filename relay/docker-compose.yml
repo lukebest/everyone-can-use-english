@@ -1,0 +1,14 @@
+services:
+  relay:
+    build: .
+    ports:
+      - "8787:8787"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./whisper.cpp:/app/whisper.cpp
+    environment:
+      DATA_DIR: /app/data
+      WHISPER_BIN: /app/whisper.cpp/build/bin/whisper-cli
+      WHISPER_MODEL: /app/whisper.cpp/models/ggml-base.en.bin

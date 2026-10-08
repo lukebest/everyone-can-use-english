@@ -1,0 +1,18 @@
+{
+  "name": "enjoy-harmony",
+  "private": true,
+  "type": "module",
+  "description": "Build the offline phonetics course bundled in the HarmonyOS app.",
+  "scripts": {
+    "build:course": "node scripts/build-course.mjs"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-ins": "^4.0.0",
+    "markdown-it-mark": "^4.0.0",
+    "markdown-it-sub": "^2.0.0",
+    "markdown-it-sup": "^2.0.0"
+  },
+  "license": "GPL-3.0-only"
+}

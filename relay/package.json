@@ -1,0 +1,28 @@
+{
+  "name": "enjoy-relay",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "HarmonyOS Enjoy relay. Text AI goes through the Cursor SDK on the Auto pool.",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "tsx --test src/*.test.ts"
+  },
+  "dependencies": {
+    "@cursor/sdk": "^1.0.13",
+    "@hono/node-server": "^1.14.0",
+    "hono": "^4.7.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  },
+  "license": "GPL-3.0-only"
+}

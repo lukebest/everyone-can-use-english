@@ -1,0 +1,9 @@
+node_modules
+oh_modules
+.hvigor
+.idea
+build
+local.properties
+entry/build
+entry/.preview
+entry/src/main/resources/rawfile/course
